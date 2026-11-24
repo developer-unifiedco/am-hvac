@@ -84,29 +84,15 @@ dd {
   transform: none;
 }
 .hero-track {
-  height: 220svh;
+  height: 220vh;
+  margin-top: 10px;
   position: relative;
   background: #0e0e0e;
 }
 .hero-stage {
-  --exit: 0;
-  --expo: linear(
-    0,
-    0.293 5%,
-    0.5 10%,
-    0.646 15%,
-    0.75 20%,
-    0.875 30%,
-    0.938 40%,
-    0.969 50%,
-    0.984 60%,
-    0.996 80%,
-    1
-  );
   position: sticky;
   top: 0;
-  height: 100svh;
-  min-height: 540px;
+  height: 100vh;
   overflow: hidden;
   isolation: isolate;
   display: flex;
@@ -122,7 +108,7 @@ dd {
   border-bottom: 1px solid #444;
   flex-shrink: 0;
   position: relative;
-  z-index: 10;
+  z-index: 90;
 }
 .brand {
   display: inline-flex;
@@ -176,106 +162,91 @@ footer a:hover {
   transform: translate(2px, -2px);
 }
 .collage {
-  position: relative;
-  flex: 1;
-  margin-inline: calc(-1 * clamp(20px, 4.45vw, 90px));
-  min-height: 0;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 81.979vw;
+  height: 40.208vw;
+  pointer-events: none;
 }
 .plate {
   position: absolute;
-  pointer-events: none;
 }
 .mask {
   height: 100%;
   position: relative;
   overflow: hidden;
-  animation: plate-open 1.8s var(--expo)
-    calc(var(--delay) - var(--mobile-offset, 0s)) both;
 }
 .mask img {
   object-fit: cover;
   filter: brightness(0.74);
 }
 .plate-1 {
-  left: 11%;
-  top: 32%;
-  width: 24%;
-  height: 44%;
-  z-index: 4;
+  left: 11.615vw;
+  top: 12.76vw;
+  width: 22.969vw;
+  height: 16.563vw;
+  z-index: 60;
 }
 .plate-2 {
-  left: 30%;
-  top: 13%;
-  width: 14%;
-  height: 22%;
+  left: 24.479vw;
+  top: -0.781vw;
+  width: 13.958vw;
+  height: 8.75vw;
+  z-index: 20;
 }
 .plate-3 {
-  left: 38%;
-  top: 28%;
-  width: 19%;
-  height: 52%;
+  left: 29.844vw;
+  top: 9.167vw;
+  width: 16.51vw;
+  height: 23.542vw;
+  z-index: 10;
 }
 .plate-4 {
-  left: 42%;
-  top: 60%;
-  width: 20%;
-  height: 29%;
-  z-index: 2;
+  left: 31.458vw;
+  top: 26.198vw;
+  width: 24.948vw;
+  height: 13.073vw;
+  z-index: 50;
 }
 .plate-5 {
-  left: 40%;
-  top: 6%;
-  width: 28%;
-  height: 63%;
-  z-index: 2;
+  left: 40.99vw;
+  top: -0.104vw;
+  width: 22.552vw;
+  height: 14.271vw;
+  z-index: 30;
 }
 .plate-6 {
-  left: 66%;
-  top: 41%;
-  width: 22%;
-  height: 46%;
-  z-index: 4;
+  left: 44.74vw;
+  top: 23.073vw;
+  width: 21.979vw;
+  height: 13.958vw;
+  z-index: 70;
 }
 .plate-7 {
-  left: 59%;
-  top: 23%;
-  width: 18%;
-  height: 43%;
+  left: 45.156vw;
+  top: 9.323vw;
+  width: 17.031vw;
+  height: 18.229vw;
+  z-index: 10;
 }
 .collage h1 {
   position: absolute;
-  z-index: 6;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  z-index: 65;
+  top: 9.74vw;
+  inset-inline: 0;
+  height: 16.25vw;
+  text-align: center;
   overflow: hidden;
-  font-size: min(19.65vw, 34svh);
-  line-height: 0.93;
+  font-size: 20vw;
+  font-weight: 400;
+  line-height: 0.81;
   letter-spacing: -0.081em;
   white-space: nowrap;
-  padding: 0 0.09em 0.055em 0;
 }
 .collage h1 span {
-  display: block;
-  animation: title-rise 1.8s var(--expo) var(--title-delay, 1.52s) both;
-}
-@keyframes plate-open {
-  from {
-    clip-path: inset(100%);
-    transform: scale(1.8);
-  }
-  to {
-    clip-path: inset(0);
-    transform: scale(1);
-  }
-}
-@keyframes title-rise {
-  from {
-    transform: translateY(112%);
-  }
-  to {
-    transform: none;
-  }
+  display: inline-block;
+  padding-inline-end: 0.08em;
 }
 .hero-base {
   position: relative;
@@ -285,7 +256,8 @@ footer a:hover {
   gap: 30px;
   align-items: center;
   padding: clamp(22px, 3vw, 50px) 0;
-  opacity: calc(1 - var(--exit));
+  margin-top: auto;
+  z-index: 80;
 }
 .hero-base p:first-child {
   font-size: clamp(25px, 2.65vw, 47px);
@@ -573,19 +545,11 @@ footer nav {
 }
 @media (max-width: 760px) {
   .hero-track {
-    height: 225svh;
-    --title-delay: 1.25s;
-    --chrome-delay: 2.8s;
-    --copy-duration: 1.5s;
+    height: 225vh;
   }
-  .plate-1,
-  .plate-3,
-  .plate-4,
-  .plate-6 {
-    --mobile-offset: 0.27s;
-  }
-  .hero-stage {
-    min-height: 460px;
+  .collage {
+    width: 360px;
+    height: 460px;
   }
   .mast {
     gap: 12px;
@@ -639,46 +603,51 @@ footer nav {
     grid-row: 1/3;
   }
   .collage h1 {
-    font-size: 21vw;
+    inset: -11px 0 0;
+    height: 80px;
+    margin: auto;
+    z-index: 80;
+    font-size: min(86px, 21vw);
+    line-height: 80px;
   }
   .plate-1 {
-    left: 2%;
-    top: 35%;
-    width: 35%;
-    height: 32%;
+    left: 3px;
+    top: 155px;
+    width: 131px;
+    height: 156px;
   }
   .plate-2 {
-    left: 22%;
-    top: 16%;
-    width: 24%;
-    height: 20%;
+    left: 53px;
+    top: 0px;
+    width: 111px;
+    height: 106px;
   }
   .plate-3 {
-    left: 32%;
-    top: 26%;
-    width: 37%;
-    height: 48%;
+    left: 82px;
+    top: 75px;
+    width: 223px;
+    height: 318px;
   }
   .plate-4 {
-    left: 41%;
-    top: 58%;
-    width: 30%;
-    height: 24%;
+    left: 183px;
+    top: 335px;
+    width: 153px;
+    height: 119px;
   }
   .plate-5 {
     display: none;
   }
   .plate-6 {
-    left: 64%;
-    top: 44%;
-    width: 32%;
-    height: 30%;
+    left: 224px;
+    top: 188px;
+    width: 131px;
+    height: 131px;
   }
   .plate-7 {
-    left: 58%;
-    top: 22%;
-    width: 29%;
-    height: 32%;
+    left: 188px;
+    top: 48px;
+    width: 146px;
+    height: 192px;
   }
   .about,
   .intro-row,
@@ -764,9 +733,6 @@ footer nav {
   }
 }
 @media (max-height: 550px) and (min-width: 761px) {
-  .hero-stage {
-    min-height: 440px;
-  }
   .hero-base {
     padding-block: 12px;
   }
@@ -788,62 +754,36 @@ footer nav {
     transition: none !important;
   }
 }
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    main > .section {
-      animation: section-cut linear both;
-      animation-timeline: view();
-      animation-range: entry 0% entry 35%;
-    }
-    @keyframes section-cut {
-      from {
-        clip-path: polygon(0 32px, 100% 110px, 100% 100%, 0 100%);
-        translate: 0 42px;
-      }
-      to {
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-        translate: 0 0;
-      }
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .hero-track:not([data-ready]) :is(.mask, h1 span, .mast, .hero-base > *) {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .about {
+    position: relative;
+    margin-top: max(-13.542vw, -38vh);
+    background: #000;
+    z-index: 1;
+  }
+  @media (max-width: 760px) {
+    .about {
+      margin-top: max(-270px, -38vh);
     }
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .mast {
-    animation: mast-enter 1s var(--expo) var(--chrome-delay, 2.5s) both;
-  }
-  .hero-base > * {
-    animation: copy-enter var(--copy-duration, 1.8s) var(--expo)
-      var(--chrome-delay, 2.5s) both;
-  }
-  .mast:focus-within,
-  .hero-base > *:focus-visible {
-    animation: none;
-  }
+main > .section {
+  position: relative;
+  border-top-color: transparent;
 }
-@keyframes mast-enter {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-@keyframes copy-enter {
-  from {
-    opacity: 0;
-    transform: translateY(1.302vw);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
-  .hero-track:not([data-ready])
-    :is(.mask, .collage h1 span, .mast, .hero-base > *) {
-    animation-play-state: paused;
-  }
+main > .section::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  inset-inline: 0;
+  height: 1px;
+  background: var(--rule);
+  transform: scaleX(var(--rule-progress, 1));
+  transform-origin: left;
 }

@@ -76,7 +76,7 @@ function Photo({
   sizes?: string;
 }) {
   return (
-    <div className={`photo photo-${name}`} data-wipe>
+    <div className={`photo photo-${name}`} data-parallax>
       <Image fill src={`/media/${name}.webp`} alt={alt} sizes={sizes} />
     </div>
   );
