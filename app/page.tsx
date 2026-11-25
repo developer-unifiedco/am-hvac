@@ -114,21 +114,41 @@ export default function Home() {
           </div>
         </section>
         <section id="services" className="section services">
-          <h2 className="service-heading" data-lift>
-            <span>6</span> HVAC services
-          </h2>
+          <div className="service-reel">
+            <div className="service-aperture">
+              <div className="service-backdrop" aria-hidden="true" />
+              <div className="count-mask" aria-hidden="true">
+                <span className="service-number">{services.length}</span>
+              </div>
+              <h2 className="service-heading">
+                <span>{services.length}</span> HVAC services
+              </h2>
+            </div>
+          </div>
           <div className="service-grid">
             <figure>
               <Photo
                 name="roof"
                 alt="Network of metal ducts across a commercial rooftop"
               />
+              <div className="service-details" aria-hidden="true">
+                {["slat", "elbow", "fan"].map((name) => (
+                  <div key={name}>
+                    <Image
+                      src={`/media/${name}.webp`}
+                      fill
+                      alt=""
+                      sizes="14vw"
+                    />
+                  </div>
+                ))}
+              </div>
               <figcaption>Air distribution</figcaption>
             </figure>
             <dl>
               {services.map(([title, description]) => (
                 <div key={title}>
-                  <dt>{title}</dt>
+                  <dt className="ink-title">{title}</dt>
                   <dd>{description}</dd>
                 </div>
               ))}
@@ -144,14 +164,22 @@ export default function Home() {
             </p>
           </div>
           <div className="sector-grid">
-            {sectors.map(([name, tag, title, alt]) => (
-              <figure key={name}>
-                <Photo name={name} alt={alt} />
-                <figcaption>
-                  <span>{tag}</span>
-                  <h3>{title}</h3>
-                </figcaption>
-              </figure>
+            {[0, 2, 4].map((first) => (
+              <div className="industry-spread" key={sectors[first][0]}>
+                <div className="spread-stage">
+                  {sectors
+                    .slice(first, first + 2)
+                    .map(([name, tag, title, alt]) => (
+                      <figure key={name}>
+                        <Photo name={name} alt={alt} />
+                        <figcaption>
+                          <span>{tag}</span>
+                          <h3>{title}</h3>
+                        </figcaption>
+                      </figure>
+                    ))}
+                </div>
+              </div>
             ))}
           </div>
         </section>
@@ -165,16 +193,30 @@ export default function Home() {
             sizes="100vw"
           />
           <div className="step-grid">
-            <h3>
-              From site inspection
-              <br />
-              to handover.
-            </h3>
+            <div className="process-aside">
+              <h3>
+                From site inspection
+                <br />
+                to handover.
+              </h3>
+              <div className="process-stills" aria-hidden="true">
+                {["slat", "elbow", "fan"].map((name) => (
+                  <div key={name}>
+                    <Image
+                      src={`/media/${name}.webp`}
+                      alt=""
+                      fill
+                      sizes="16vw"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
             <ol>
               {process.map(([title, description]) => (
                 <li key={title}>
                   <div>
-                    <h4>{title}</h4>
+                    <h4 className="ink-title">{title}</h4>
                     <p>{description}</p>
                   </div>
                 </li>
@@ -195,7 +237,17 @@ export default function Home() {
         </section>
         <section className="section quote-intro">
           <div>
-            <h2 data-lift>Let’s make your space more comfortable.</h2>
+            <h2 data-lift>
+              <span className="line-mask">
+                <span>Let’s make your</span>
+              </span>{" "}
+              <span className="line-mask">
+                <span>space more</span>
+              </span>{" "}
+              <span className="line-mask">
+                <span>comfortable.</span>
+              </span>
+            </h2>
             <div className="quote-foot">
               <p>
                 Talk to us about a new installation, repair or maintenance plan.

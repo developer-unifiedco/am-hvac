@@ -18,44 +18,63 @@ export function Hero() {
       className="hero-track"
       id="top"
     >
-      <div className="hero-stage">
-        <header
-          className="mast"
-          onKeyDown={(e) => {
-            if (e.key === "Escape" && open) {
-              setOpen(false);
-              menuButton.current?.focus();
-            }
-          }}
+      <div className="entry-loader" aria-label="Loading AM HVAC">
+        <svg
+          className="loader-mark"
+          viewBox="0 0 408 184"
+          role="img"
+          aria-label="AM HVAC"
         >
-          <a href="#top" aria-label="AM HVAC home" className="brand">
-            <Image src="/media/am.png" width={76} height={34} alt="" /> HVAC
-          </a>
-          <button
-            type="button"
-            ref={menuButton}
-            className="menu-toggle"
-            aria-expanded={open}
-            aria-controls="primary-nav"
-            onClick={() => setOpen(!open)}
-          >
-            {open ? "Close" : "Menu"}
-          </button>
-          <nav
-            id="primary-nav"
-            aria-label="Main navigation"
-            data-open={open}
-            onClick={() => setOpen(false)}
-          >
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#industries">Industries</a>
-            <a href="#process">Process</a>
-          </nav>
-          <a className="quote-button" href="#contact">
-            Get a free quote <span aria-hidden="true">↗</span>
-          </a>
-        </header>
+          <path
+            fill="currentColor"
+            d="M0 184 122 14 282 184H81l15-20h144L123 40 20 184ZM181 0l113 120L408 0v184h-16V42l-98 103-97-103v30l-16-17Z"
+          />
+        </svg>
+        <div className="load-status">
+          <span role="status">Loading</span>
+          <output aria-hidden="true">0%</output>
+          <i />
+        </div>
+        <button type="button">Skip intro</button>
+      </div>
+      <header
+        className="mast"
+        onKeyDown={(e) => {
+          if (e.key === "Escape" && open) {
+            setOpen(false);
+            menuButton.current?.focus();
+          }
+        }}
+      >
+        <a href="#top" aria-label="AM HVAC home" className="brand">
+          <Image src="/media/am.png" width={76} height={34} alt="" /> HVAC
+        </a>
+        <button
+          type="button"
+          ref={menuButton}
+          className="menu-toggle"
+          aria-expanded={open}
+          aria-controls="primary-nav"
+          onClick={() => setOpen(!open)}
+        >
+          {open ? "Close" : "Menu"}
+        </button>
+        <nav
+          id="primary-nav"
+          aria-label="Main navigation"
+          data-open={open}
+          onClick={() => setOpen(false)}
+        >
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#industries">Industries</a>
+          <a href="#process">Process</a>
+        </nav>
+        <a className="quote-button" href="#contact">
+          Get a free quote <span aria-hidden="true">↗</span>
+        </a>
+      </header>
+      <div className="hero-stage">
         <div className="collage">
           {heroLayers.map(({ image }, i) => (
             <div

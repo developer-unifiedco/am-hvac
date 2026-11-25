@@ -1,5 +1,6 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { prepareEntrance } from "./entry-loader";
 
 export const heroLayers = [
   {
@@ -145,7 +146,7 @@ export function animateHero(root: HTMLElement) {
         ),
       );
     }
-    intro.call(connectScroll, [], mobile ? 4.31 : 2.51);
+    connectScroll();
     root.dataset.ready = "true";
     if (hasStarted || scrollY > 0) intro.progress(1);
     else intro.play();
@@ -172,10 +173,9 @@ export function animateHero(root: HTMLElement) {
     mobileQuery.addEventListener("change", configure);
     reduced.addEventListener("change", configure);
   }
-  if (document.readyState === "complete") start();
-  else window.addEventListener("load", start, { once: true });
+  const cancelEntrance = prepareEntrance(root, start);
   return () => {
-    window.removeEventListener("load", start);
+    cancelEntrance();
     mobileQuery.removeEventListener("change", configure);
     reduced.removeEventListener("change", configure);
     cleanup();
